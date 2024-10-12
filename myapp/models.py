@@ -1,9 +1,9 @@
 from django.db import models
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)  # Main category name
+    name = models.CharField(max_length=100, unique=True)  
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='categories/', blank=True, null=True)  # Image for category
+    image = models.ImageField(upload_to='categories/', blank=True, null=True)  
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -11,7 +11,7 @@ class Category(models.Model):
 
 class Subcategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcategories')  # Link to main category
-    name = models.CharField(max_length=100, unique=True)  # Subcategory name
+    name = models.CharField(max_length=100)  # Subcategory name
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='subcategories/', blank=True, null=True)  # Image for subcategory
 

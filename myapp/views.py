@@ -1,10 +1,13 @@
 from django.http import HttpResponse
 #  render template
 from django.shortcuts import render
+from .models import Category, Subcategory
 
 
 def index(request):
-    return render(request, "shopify/index.html")
+    categories = Category.objects.prefetch_related('subcategories').all()
+    
+    return render(request, "shopify/index.html", context={'categories': categories})
 
 def about(request):
     return render(request, "shopify/about.html")
