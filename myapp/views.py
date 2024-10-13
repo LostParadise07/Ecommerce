@@ -30,7 +30,8 @@ def specific_subcategory(request,subproduct_id):
         'products': products,
     })
 
-def single_product(request):
-    return render(request, "shopify/single-product.html")
+def single_product(request,product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, "shopify/single-product.html",{'product':product})
 
 
