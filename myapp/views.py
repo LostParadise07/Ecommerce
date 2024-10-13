@@ -1,7 +1,6 @@
 from django.http import HttpResponse
-#  render template
-from django.shortcuts import render
 from .models import Category, Subcategory
+from django.shortcuts import render, get_object_or_404
 
 
 def index(request):
@@ -15,8 +14,13 @@ def about(request):
 def contact(request):
     return render(request, "shopify/contact.html")
 
-def products(request):
-    return render(request, "shopify/products.html")
+def products(request,category_id):
+    category = get_object_or_404(Category, id=category_id)
+    subcategory = Subcategory.objects.filter(category= category)
+    return render(request, "shopify/products.html", {
+        'category': category,
+        'subcategory': subcategory
+    })
 
 def single_product(request):
     return render(request, "shopify/single-product.html")

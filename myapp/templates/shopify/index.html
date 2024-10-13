@@ -79,7 +79,7 @@ https://templatemo.com/tm-571-hexashop
                                                 <h4>{{ category.name }}</h4>
                                                 <p>{{ category.description }}</p>
                                                 <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
+                                                    <a href="{% url 'products' category.id %}"">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
