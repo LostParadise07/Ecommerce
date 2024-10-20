@@ -24,11 +24,9 @@ class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)  
     subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, null=True, related_name='products')  
     image = models.ImageField(upload_to='products/',default='brands/default-logo.png')  
     available = models.BooleanField(default=True)  
-    url_to_brand_page = models.URLField(blank=True, null=True)  
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
